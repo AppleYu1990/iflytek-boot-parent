@@ -12,6 +12,9 @@ import com.iflytek.user.entity.User;
  */
 public interface UserService {
 
-    public User getUserInfo(Long Id);
+    User getUserInfo(Long Id);
 
+    User insertUser(User user);
+
+    void handleMessage(String msg);
 }

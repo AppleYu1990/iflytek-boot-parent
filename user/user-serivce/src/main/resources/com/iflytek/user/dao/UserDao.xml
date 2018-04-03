@@ -4,4 +4,9 @@
     <select id="getUserInfo" parameterType="java.lang.Long" resultType="com.iflytek.user.entity.User">
         select * from user where id = #{id}
     </select>
+
+    <insert id="insertUser" parameterType="com.iflytek.user.entity.User" useGeneratedKeys="true" keyColumn="id"
+            keyProperty="id">
+        insert user (name, phone) values (#{name}, #{phone})
+    </insert>
 </mapper>

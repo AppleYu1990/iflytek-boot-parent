@@ -10,4 +10,8 @@ package com.iflytek.user.constants;
  */
 public interface UserConstant {
 
+    public static final String USER_MESSAGE_EXCHANGE = "user.message.exchange";
+
+    public static final String USER_MESSAGE_QUEUE = "user.message.queue";
+
 }

@@ -1,6 +1,7 @@
 package com.iflytek.user.provider;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
 import com.iflytek.common.Response.Response;
 import com.iflytek.common.Response.ResponseUtils;
 import com.iflytek.user.api.UserAPI;
@@ -32,6 +33,16 @@ public class UserProvider implements UserAPI {
             return ResponseUtils.returnObjectSuccess(userService.getUserInfo(id));
         } catch (Exception e) {
             LOGGER.error("获取用户信息失败！id = {}", id, e);
+            return ResponseUtils.returnException(e);
+        }
+    }
+
+    @Override
+    public Response<User> insertUser(User user) {
+        try {
+            return ResponseUtils.returnObjectSuccess(userService.insertUser(user));
+        } catch (Exception e) {
+            LOGGER.error("新增用户信息失败！{}", JSON.toJSONString(user), e);
             return ResponseUtils.returnException(e);
         }
     }
