@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.iflytek.common.cache.RedisTemplateBuilder;
 import com.iflytek.user.dao.UserDao;
 import com.iflytek.user.entity.User;
+import com.iflytek.user.mongo.UserMongo;
 import com.iflytek.user.mq.MessageSender;
 import com.iflytek.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private MessageSender messageSender;
+
+    @Autowired
+    private UserMongo userMongo;
 
     private static final String USER_ID = "user:id:";
 
@@ -62,10 +66,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void handleMessage(String msg) {
         User user = JSON.parseObject(msg, User.class);
-        if (user != null) {
-            System.out.println("欢迎您！" + user.getName());
-        } else {
-            System.out.println("对象为空!");
-        }
+        userMongo.insert(user);
     }
 }

@@ -25,11 +25,6 @@ public class Response<T> implements Serializable {
     private String code = ResponseConstant.SUCCESS.getCode();
 
     /**
-     * RPC接口返回的数据对象
-     */
-    private T data;
-
-    /**
      * RPC接口返回的接口调用信息
      */
     private String msg = ResponseConstant.SUCCESS.getMsg();
@@ -38,6 +33,11 @@ public class Response<T> implements Serializable {
      * RPC接口返回的接口调用异常信息
      */
     private String errorMsg;
+
+    /**
+     * RPC接口返回的数据对象
+     */
+    private T data;
 
     public Response() {
     }

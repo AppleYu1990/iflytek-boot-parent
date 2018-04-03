@@ -1,5 +1,11 @@
 package com.iflytek.common.mongodb;
 
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+
+import java.util.Collection;
+import java.util.List;
+
 /**
  * Copyright (c) 2017-2018 iFLYTEK Company LTD.
  * All rights reserved.
@@ -15,7 +21,7 @@ public interface BaseMongoDao<T> {
      * @param query
      * @return
      */
-//    List<T> findList(Query query);
+    List<T> findList(Query query);
 
     /**
      * 查单条
@@ -23,7 +29,7 @@ public interface BaseMongoDao<T> {
      * @param query
      * @return
      */
-//    T findOne(Query query);
+    T findOne(Query query);
 
     /**
      * 更新数据
@@ -32,7 +38,7 @@ public interface BaseMongoDao<T> {
      * @param update
      * @return
      */
-//    T update(Query query, Update update);
+    T update(Query query, Update update);
 
     /**
      * 插入数据
@@ -40,7 +46,7 @@ public interface BaseMongoDao<T> {
      * @param entity
      * @return
      */
-//    T insert(T entity);
+    T insert(T entity);
 
     /**
      * 根据id查询数据
@@ -48,7 +54,7 @@ public interface BaseMongoDao<T> {
      * @param id
      * @return
      */
-//    T findById(String id);
+    T findById(String id);
 
     /**
      * 根据id和集合名（相当于MySQL中的表名）查询数据
@@ -57,7 +63,7 @@ public interface BaseMongoDao<T> {
      * @param collectionName
      * @return
      */
-//    T findById(String id, String collectionName);
+    T findById(String id, String collectionName);
 
     /**
      * 分页查询
@@ -66,7 +72,7 @@ public interface BaseMongoDao<T> {
      * @param query
      * @return
      */
-//    Page<T> findPage(Page<T> page, Query query);
+    Page<T> findPage(Page<T> page, Query query);
 
     /**
      * 查询计数
@@ -74,12 +80,12 @@ public interface BaseMongoDao<T> {
      * @param query
      * @return
      */
-//    Long count(Query query);
+    Long count(Query query);
 
     /**
      * 批量插入
      *
      * @param collection
      */
-//    void batchInsert(Collection<T> collection);
+    void batchInsert(Collection<T> collection);
 }

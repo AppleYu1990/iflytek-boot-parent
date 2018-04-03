@@ -1,5 +1,15 @@
 package com.iflytek.common.mongodb;
 
+import com.iflytek.common.utils.ReflectUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 /**
  * Copyright (c) 2017-2018 iFLYTEK Company LTD.
  * All rights reserved.
@@ -10,7 +20,7 @@ package com.iflytek.common.mongodb;
  */
 public abstract class AbsBaseMongo<T> implements BaseMongoDao<T> {
 
-    /*@Autowired
+    @Autowired
     protected MongoTemplate mongoTemplate;
 
     protected abstract void setMongoTemplate(MongoTemplate mongoTemplate);
@@ -73,5 +83,5 @@ public abstract class AbsBaseMongo<T> implements BaseMongoDao<T> {
     @Override
     public void batchInsert(Collection<T> collection) {
         mongoTemplate.insert(collection, this.getEntityClass());
-    }*/
+    }
 }
