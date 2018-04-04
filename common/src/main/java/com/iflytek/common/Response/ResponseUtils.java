@@ -50,9 +50,9 @@ public class ResponseUtils {
             return new Response(false, ie.getCode(), null, ie.getMsg(), ie.getErrorMsg());
         } else if (e instanceof IllegalArgumentException) {
             IllegalArgumentException iae = (IllegalArgumentException) e;
-            return new Response(false, ExceptionEnum.DATA_ILLEGAL_EXCEPTION.getCode(), null, ExceptionEnum.DATA_ILLEGAL_EXCEPTION.getMsg(), iae.getMessage());
+            return new Response(false, ExceptionEnum.DATA_ILLEGAL_EXCEPTION.getCode(), new Object(), ExceptionEnum.DATA_ILLEGAL_EXCEPTION.getMsg(), iae.getMessage());
         } else {
-            return new Response(false, ExceptionEnum.SYS_EXCEPTION.getCode(), null, ExceptionEnum.SYS_EXCEPTION.getMsg(), ExceptionEnum.SYS_EXCEPTION.getErrorMsg());
+            return new Response(false, ExceptionEnum.SYS_EXCEPTION.getCode(), new Object(), ExceptionEnum.SYS_EXCEPTION.getMsg(), ExceptionEnum.SYS_EXCEPTION.getErrorMsg());
         }
     }
 

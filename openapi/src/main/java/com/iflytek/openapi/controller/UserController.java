@@ -4,7 +4,6 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.iflytek.common.Response.Response;
 import com.iflytek.user.api.UserAPI;
 import com.iflytek.user.entity.User;
-import org.springframework.http.HttpMethod;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +29,7 @@ public class UserController {
      */
     @RequestMapping(value = "info/{id}", method = RequestMethod.GET)
     public Response<User> getUserInfo(@PathVariable Long id) {
+        id = null;
         Assert.notNull(id, "用户id不能为空！");
         return userAPI.getUserInfo(id);
     }

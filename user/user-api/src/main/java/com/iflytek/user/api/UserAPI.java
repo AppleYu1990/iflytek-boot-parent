@@ -18,7 +18,7 @@ public interface UserAPI {
      * @param id
      * @return
      */
-    public Response<User> getUserInfo(Long id);
+    Response<User> getUserInfo(Long id);
 
     /**
      * 插入用户信息

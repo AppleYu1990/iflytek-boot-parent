@@ -3,6 +3,7 @@ package com.iflytek.common.Response;
 import com.iflytek.common.constants.ResponseConstant;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Copyright (c) 2017-2018 iFLYTEK Company LTD.
@@ -57,43 +58,56 @@ public class Response<T> implements Serializable {
         this.errorMsg = errorMsg;
     }
 
-    public Boolean getStatus() {
+    /**
+     * 调用结果状态
+     * @return
+     */
+    public Boolean success(){
         return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
     public String getCode() {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getMsg() {
         return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
     }
 
     public String getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
     public T getData() {
         return data;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    @Override
+    public String toString() {
+        return "Response{" +
+                "status=" + status +
+                ", code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
+                ", errorMsg='" + errorMsg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Response<?> response = (Response<?>) o;
+        return Objects.equals(status, response.status) &&
+                Objects.equals(code, response.code) &&
+                Objects.equals(msg, response.msg) &&
+                Objects.equals(errorMsg, response.errorMsg) &&
+                Objects.equals(data, response.data);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(status, code, msg, errorMsg, data);
     }
 }
