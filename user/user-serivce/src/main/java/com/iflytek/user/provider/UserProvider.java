@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Date: Created in 2018 2018/1/20 17:55
  * @Author: pengnian
  */
-@Service(interfaceClass = UserAPI.class)
+@Service(interfaceClass = UserAPI.class, filter = {"consumerCommonFilter"})
 public class UserProvider implements UserAPI {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserProvider.class);

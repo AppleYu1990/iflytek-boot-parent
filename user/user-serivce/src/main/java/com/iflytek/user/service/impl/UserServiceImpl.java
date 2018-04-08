@@ -1,9 +1,11 @@
 package com.iflytek.user.service.impl;
 
+import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.iflytek.common.cache.RedisTemplateBuilder;
+import com.iflytek.common.interception.DubboFilter;
 import com.iflytek.common.mongodb.Page;
 import com.iflytek.common.utils.PageUtils;
 import com.iflytek.user.dao.UserDao;
@@ -54,6 +56,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserInfo(Long id) {
+        String applicationName = (String) RpcContext.getContext().get(DubboFilter.APPLICATION_NAME);
+        
+        System.out.println("微服务名：" + applicationName);
+
         RedisTemplate<String, User> redisTemplate = redisTemplateBuilder.build(User.class);
         User user = redisTemplate.opsForValue().get(USER_ID + id);
         if (user != null) {
