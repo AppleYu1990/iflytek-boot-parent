@@ -1,8 +1,11 @@
 package com.iflytek.user.dao;
 
 
+import com.iflytek.user.dto.UserDto;
 import com.iflytek.user.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * Copyright (c) 2017-2018 iFLYTEK Company LTD.
@@ -18,4 +21,6 @@ public interface UserDao {
     User getUserInfo(Long id);
 
     Integer insertUser(User user);
+
+    List<User> getUserPage(UserDto userDto);
 }

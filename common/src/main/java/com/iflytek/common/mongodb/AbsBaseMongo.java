@@ -70,7 +70,7 @@ public abstract class AbsBaseMongo<T> implements BaseMongoDao<T> {
 
         query.skip((pageNo - 1) * pageSize).limit(pageSize);
         List<T> list = this.findList(query);
-        page.setCollections(list == null ? new ArrayList<>() : list);
+        page.setList(list == null ? new ArrayList<>() : list);
 
         return page;
     }

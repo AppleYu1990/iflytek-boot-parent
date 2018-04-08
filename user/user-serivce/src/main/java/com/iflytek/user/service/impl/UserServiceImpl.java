@@ -1,9 +1,13 @@
 package com.iflytek.user.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.iflytek.common.cache.RedisTemplateBuilder;
 import com.iflytek.common.mongodb.Page;
+import com.iflytek.common.utils.PageUtils;
 import com.iflytek.user.dao.UserDao;
+import com.iflytek.user.dto.UserDto;
 import com.iflytek.user.entity.User;
 import com.iflytek.user.mongo.UserMongo;
 import com.iflytek.user.mq.MessageSender;
@@ -14,6 +18,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 /**
  * Copyright (c) 2017-2018 iFLYTEK Company LTD.
@@ -58,7 +64,7 @@ public class UserServiceImpl implements UserService {
         redisTemplate.opsForValue().set(USER_ID + id, userInfo);
         
         System.out.println(redisHost + "===" + redisPort);
-        
+
         return userInfo;
     }
 
@@ -78,5 +84,12 @@ public class UserServiceImpl implements UserService {
     public void handleMessage(String msg) {
         User user = JSON.parseObject(msg, User.class);
         userMongo.insert(user);
+    }
+
+    @Override
+    public Page<User> getUserPage(UserDto userDto) {
+        PageHelper.startPage(userDto.getPageNo(), userDto.getPageSize());
+        List<User> userList = userDao.getUserPage(userDto);
+        return PageUtils.getPage(userList);
     }
 }

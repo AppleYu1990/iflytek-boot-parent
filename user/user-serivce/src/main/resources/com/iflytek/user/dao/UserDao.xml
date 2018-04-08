@@ -9,4 +9,8 @@
             keyProperty="id">
         insert user (name, phone) values (#{name}, #{phone})
     </insert>
+
+    <select id="getUserPage" parameterType="com.iflytek.user.dto.UserDto" resultType="com.iflytek.user.entity.User">
+        select * from user order by id desc
+    </select>
 </mapper>

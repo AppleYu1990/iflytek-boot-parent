@@ -18,17 +18,17 @@ public class Page<T> implements Serializable {
 
     private Integer pageSize;
 
-    private Collection<T> collections;
+    private Collection<T> list;
 
     private Long count;
 
     public Page() {
     }
 
-    public Page(Integer pageNo, Integer pageSize, Collection<T> collections, Long count) {
+    public Page(Integer pageNo, Integer pageSize, Collection<T> list, Long count) {
         this.pageNo = pageNo;
         this.pageSize = pageSize;
-        this.collections = collections;
+        this.list = list;
         this.count = count;
     }
 
@@ -56,11 +56,11 @@ public class Page<T> implements Serializable {
         this.pageSize = pageSize;
     }
 
-    public Collection<T> getCollections() {
-        return collections;
+    public Collection<T> getList() {
+        return list;
     }
 
-    public void setCollections(Collection<T> collections) {
-        this.collections = collections;
+    public void setList(Collection<T> list) {
+        this.list = list;
     }
 }

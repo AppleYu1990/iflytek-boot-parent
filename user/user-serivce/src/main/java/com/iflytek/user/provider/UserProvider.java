@@ -4,7 +4,9 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.iflytek.common.Response.Response;
 import com.iflytek.common.Response.ResponseUtils;
+import com.iflytek.common.mongodb.Page;
 import com.iflytek.user.api.UserAPI;
+import com.iflytek.user.dto.UserDto;
 import com.iflytek.user.entity.User;
 import com.iflytek.user.service.UserService;
 import org.slf4j.Logger;
@@ -43,6 +45,16 @@ public class UserProvider implements UserAPI {
             return ResponseUtils.returnObjectSuccess(userService.insertUser(user));
         } catch (Exception e) {
             LOGGER.error("新增用户信息失败！{}", JSON.toJSONString(user), e);
+            return ResponseUtils.returnException(e);
+        }
+    }
+
+    @Override
+    public Response<Page<User>> getUserPage(UserDto userDto) {
+        try {
+            return ResponseUtils.returnObjectSuccess(userService.getUserPage(userDto));
+        } catch (Exception e) {
+            LOGGER.error("获取用户信息失败！", e);
             return ResponseUtils.returnException(e);
         }
     }

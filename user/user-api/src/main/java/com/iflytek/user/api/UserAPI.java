@@ -1,6 +1,8 @@
 package com.iflytek.user.api;
 
 import com.iflytek.common.Response.Response;
+import com.iflytek.common.mongodb.Page;
+import com.iflytek.user.dto.UserDto;
 import com.iflytek.user.entity.User;
 
 /**
@@ -26,4 +28,12 @@ public interface UserAPI {
      * @return
      */
     Response<User> insertUser(User user);
+
+    /**
+     * 分页查询用户
+     *
+     * @param userDto
+     * @return
+     */
+    Response<Page<User>> getUserPage(UserDto userDto);
 }

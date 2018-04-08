@@ -1,5 +1,7 @@
 package com.iflytek.user.service;
 
+import com.iflytek.common.mongodb.Page;
+import com.iflytek.user.dto.UserDto;
 import com.iflytek.user.entity.User;
 
 /**
@@ -17,4 +19,6 @@ public interface UserService {
     User insertUser(User user);
 
     void handleMessage(String msg);
+
+    Page<User> getUserPage(UserDto userDto);
 }
