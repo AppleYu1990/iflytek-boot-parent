@@ -2,12 +2,14 @@ package com.iflytek.user.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.iflytek.common.cache.RedisTemplateBuilder;
+import com.iflytek.common.mongodb.Page;
 import com.iflytek.user.dao.UserDao;
 import com.iflytek.user.entity.User;
 import com.iflytek.user.mongo.UserMongo;
 import com.iflytek.user.mq.MessageSender;
 import com.iflytek.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +38,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMongo userMongo;
 
+    @Value("${redis.host}")
+    private String redisHost;
+
+    @Value("${redis.port}")
+    private String redisPort;
+
     private static final String USER_ID = "user:id:";
 
     @Override
@@ -48,6 +56,9 @@ public class UserServiceImpl implements UserService {
         User userInfo = userDao.getUserInfo(id);
         Assert.notNull(userInfo, "无法根据当期id查询到用户信息");
         redisTemplate.opsForValue().set(USER_ID + id, userInfo);
+        
+        System.out.println(redisHost + "===" + redisPort);
+        
         return userInfo;
     }
 

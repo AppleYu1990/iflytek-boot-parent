@@ -29,7 +29,6 @@ public class UserController {
      */
     @RequestMapping(value = "info/{id}", method = RequestMethod.GET)
     public Response<User> getUserInfo(@PathVariable Long id) {
-        id = null;
         Assert.notNull(id, "用户id不能为空！");
         return userAPI.getUserInfo(id);
     }

@@ -226,6 +226,13 @@
             </exclusions>
         </dependency>-->
 
+        <!-- superdiamond -->
+        <dependency>
+            <groupId>com.github.diamond</groupId>
+            <artifactId>super-diamond-client</artifactId>
+            <version>1.2.2-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

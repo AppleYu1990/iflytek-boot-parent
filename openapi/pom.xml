@@ -95,6 +95,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
+
+		<!-- superdiamond -->
+		<dependency>
+			<groupId>com.github.diamond</groupId>
+			<artifactId>super-diamond-client</artifactId>
+			<version>1.2.2-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
